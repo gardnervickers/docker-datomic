@@ -1,4 +1,4 @@
-DOCKER_IMAGE=pointslope/datomic-pro-starter
+DOCKER_IMAGE=997690819742.dkr.ecr.us-east-1.amazonaws.com/datomic-pro-starter
 DOCKER_TAG?=$(shell ./datomic-version)
 
 .PHONY: all clean info

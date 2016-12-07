@@ -2,9 +2,8 @@ FROM clojure:lein-2.6.1-alpine
 
 MAINTAINER Christian Romney "cromney@pointslope.com"
 
-ENV DATOMIC_VERSION 0.9.5530
+ENV DATOMIC_VERSION 0.9.5407
 ENV DATOMIC_HOME /opt/datomic-pro-$DATOMIC_VERSION
-ENV DATOMIC_DATA $DATOMIC_HOME/data
 
 RUN apk add --no-cache unzip curl
 
@@ -23,10 +22,5 @@ ONBUILD ADD config $DATOMIC_HOME/config
 
 WORKDIR $DATOMIC_HOME
 RUN echo DATOMIC HOME: $DATOMIC_HOME
-ENTRYPOINT ["./bin/transactor"]
-
-# 3. Provide a CMD argument with the relative path to the
-# transactor.properties file it will supplement the ENTRYPOINT
-VOLUME $DATOMIC_DATA
 
 EXPOSE 4334 4335 4336

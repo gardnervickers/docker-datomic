@@ -1,44 +1,7 @@
-# Datomic Pro Starter
-
-This Dockerfile defines a base image
-for [Datomic Pro Starter Edition](http://www.datomic.com/). It defines
-the necessary automation steps for running Datomic, while deferring
-all privileged, user-specific configuration to a derived image via
-**ONBUILD** instructions.
-
-This approach makes it trivial to customize your own Dockerfile to run
-any supported Datomic configuration. To do so, you need only to follow
-these steps:
-
-1. Create a `Dockerfile` that is based **FROM** this image
-2. Create a `.credentials` file containing your http user and password
-   for downloading from **my.datomic.com** in the form `user:pass`
-3. Create a `config` folder where your `Dockerfile` resides and place
-   your Datomic transactor.properties config file(s) within it
-4. Add a **CMD** instruction in your `Dockerfile` with the relative
-   path to that file e.g. **config/riak.properties**
-
-No other configuration is necessary. Simply **docker build** and
-**docker run** your image.
-
-## Example Folder Structure
-
-    .
-    ├── .credentials
-    ├── Dockerfile
-    └── config
-        └── dev-transactor.properties
-
-## Example Dockerfile
-
-    FROM pointslope/datomic-pro-starter:0.9.5530
-    MAINTAINER John Doe "jdoe@example.org"
-    CMD ["config/dev-transactor.properties"]
-
-## Miscellany
-
-The Dockerfile **EXPOSES** port 4334 and establises a **VOLUME** at
-`/opt/datomic-pro-$DATOMIC_VERSION/data`.
+## What
+Modified version of Christian Romney "cromney@pointslope.com"
+docker-datomic base image. In place to remove the entrypoint
+for `./bin/transactor`
 
 ## License
 
